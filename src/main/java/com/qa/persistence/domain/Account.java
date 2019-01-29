@@ -3,9 +3,9 @@ package com.qa.persistence.domain;
 public class Account {
 	private String firstName;
 	private String lastName;
-	private String accountNumber;
+	private int accountNumber;
 
-	public Account(String fName, String lName, String aNumber) {
+	public Account(String fName, String lName, int aNumber) {
 		this.firstName = fName;
 		this.lastName = lName;
 		this.accountNumber = aNumber;
@@ -27,16 +27,16 @@ public class Account {
 		this.lastName = lastName;
 	}
 
-	public String getAccountNumber() {
+	public int getAccountNumber() {
 		return accountNumber;
 	}
 
-	public void setAccountNumber(String accountNumber) {
+	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
 	}
 
 	public String getAccount() {
-		return firstName + lastName + accountNumber;
+		return firstName + " " + lastName + " " + accountNumber;
 	}
 
 }
