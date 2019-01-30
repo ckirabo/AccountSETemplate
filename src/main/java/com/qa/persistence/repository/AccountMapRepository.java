@@ -8,7 +8,7 @@ import com.qa.utils.JSONUtil;
 
 public class AccountMapRepository implements AccountRepository {
 
-	Map<Long, Account> accounts = new HashMap<>();
+	Map<Long, Account> accounts = new HashMap<Long, Account>();
 	JSONUtil jsonUtil;
 
 	public String getAllAccounts() {
