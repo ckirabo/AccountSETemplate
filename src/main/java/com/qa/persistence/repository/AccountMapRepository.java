@@ -50,7 +50,7 @@ public class AccountMapRepository implements AccountRepository {
 
 			acc.setFirstName("Clare");
 			acc.setLastName("Kirabo");
-			System.out.println(acc.getFirstName() + " " + acc.getLastName());
+			
 			return "Updated";
 		}
 		return "does not exist";

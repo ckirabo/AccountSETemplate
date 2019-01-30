@@ -38,6 +38,7 @@ public class AccountServiceTest {
 
 	@Test
 	public void add2AccountTest() {
+		
 		repoClass.createAccount(jsonString);
 		repoClass.createAccount(jsonString1);
 		assertEquals("Did not Work",  "Success",repoClass.createAccount(jsonString));
@@ -86,7 +87,7 @@ public class AccountServiceTest {
 		assertEquals("Not Worked","Lee Dandy 5432",test.getAccount());
 		
 		}
-
+ 
 	@Test
 	public void accountConversionToJSONTestEmptyMapWithConversion() {
 
@@ -95,7 +96,8 @@ public class AccountServiceTest {
 		
 		String account = util.getJSONForObject(anAccount);
 		
-		repoClass.createAccount(account);
+		
+		assertEquals("It wasnt added","Success", repoClass.createAccount(account));
 	}
 
 	@Test
