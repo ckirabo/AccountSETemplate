@@ -1,4 +1,4 @@
-package com.qa.persistence.domain;
+package com.qa.app;
 
 public class App {
 
