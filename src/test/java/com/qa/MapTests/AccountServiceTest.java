@@ -121,6 +121,17 @@ public class AccountServiceTest {
 		assertEquals("Did not Work",  "Updated" ,repoClass.updateAccount(1234L, jsonString));
 
 	}
+	
+	
+	@Test
+	public void getCountForTheSameNames() {
+		
+		Account anAccount = new Account("clare", "kirabo", 6000);
+		String accountClare = util.getJSONForObject(anAccount);
+		repoClass.createAccount(accountClare);
+		
+		assertEquals("Cannot find user", 1 , repoClass.returnNames("clare"));
+	}
 
 	@Test
 	public void getCountForFirstNamesInAccountWhenOne() {
