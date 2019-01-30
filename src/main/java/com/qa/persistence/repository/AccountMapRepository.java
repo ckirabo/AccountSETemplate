@@ -9,6 +9,7 @@ import com.qa.utils.JSONUtil;
 public class AccountMapRepository implements AccountRepository {
 
 	Map<Long, Account> accounts = new HashMap<>();
+	JSONUtil jsonUtil;
 
 	public String getAllAccounts() {
 
@@ -24,13 +25,13 @@ public class AccountMapRepository implements AccountRepository {
 	}
 
 	public String createAccount(String account1) {
-		JSONUtil jsonUtil = new JSONUtil();
+		jsonUtil = new JSONUtil();
 
 		Account acc = jsonUtil.getObjectForJSON(account1, Account.class);
 
 		accounts.put((long) acc.getAccountNumber(), acc);
 
-		return "Success"; 
+		return "Success";
 	}
 
 	public String deleteAccount(Long id) {
@@ -43,18 +44,35 @@ public class AccountMapRepository implements AccountRepository {
 
 	public String updateAccount(Long id, String account) {
 
-		JSONUtil jsonutil = new JSONUtil();
+		jsonUtil = new JSONUtil();
 
-		Account acc = jsonutil.getObjectForJSON(account, Account.class);
+		Account acc = jsonUtil.getObjectForJSON(account, Account.class);
 		if (accounts.containsKey(id)) {
 
 			acc.setFirstName("Clare");
 			acc.setLastName("Kirabo");
-			
+
 			return "Updated";
 		}
 		return "does not exist";
 
+	}
+
+	public int returnNames(String firstname) {
+
+		String tempString =" ";
+
+		int count = 0;
+		for (Account i : accounts.values()) {
+			if (i.getFirstName().equals(firstname)) {
+				count++;
+				String accountToString = i.toString();
+				accountToString += " ";
+				tempString += accountToString;	
+			}
+		}
+
+		return count;
 	}
 
 }
