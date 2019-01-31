@@ -11,6 +11,7 @@ public class BuisnessLogic implements AccountServices {
 	@Inject
 	private AccountRepository accountRepo;
 	
+	@Inject
 	private JSONUtil json;
 
 	@Override
@@ -18,10 +19,10 @@ public class BuisnessLogic implements AccountServices {
 		return accountRepo.getAllAccounts();
 	}
 
+
 	@Override
 	public String createAccount(String account) {
 
-		json = new JSONUtil();
 		Account anAccount = json.getObjectForJSON(account, Account.class);
 		if (anAccount.getAccountNumber() == 9) {
 			return "{ \"Message\" : \"This account has been blocked\"}";
