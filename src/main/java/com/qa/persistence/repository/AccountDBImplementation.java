@@ -6,6 +6,7 @@ import static javax.transaction.Transactional.TxType.SUPPORTS;
 import java.util.Collection;
 
 import javax.enterprise.inject.Default;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -21,11 +22,13 @@ public class AccountDBImplementation implements AccountRepository {
 
 	@PersistenceContext(unitName = "primary")
 	private EntityManager em;
+	
+	@Inject
 	private JSONUtil jsonUtil;
 	
 	@Override
 	public String getAllAccounts() {
-	    Query query = em.createQuery("Select a from Account a");
+	    Query query = em.createQuery("SELECT a FROM Account a");
 	    Collection<Account> accounts = (Collection<Account>) query.getResultList();
 		return jsonUtil.getJSONForObject(accounts);
 	}
@@ -47,7 +50,7 @@ public class AccountDBImplementation implements AccountRepository {
 		
 		Account thisAccount = em.find(Account.class, id);
 		if(thisAccount != null) {
-			em.detach(thisAccount);
+			em.remove(thisAccount);
 			return "{ \"Message\" : \"The account has been deleted\"}";
 		}
 		

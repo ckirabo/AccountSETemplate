@@ -11,7 +11,7 @@ import javax.ws.rs.Produces;
 
 import com.qa.buisness.AccountServices;
 
-@Path("/author")
+@Path("/account")
 public class AccountEndpoint {
 
 	@Inject 
