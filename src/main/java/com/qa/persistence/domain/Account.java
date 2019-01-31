@@ -10,6 +10,7 @@ public class Account {
 	
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	@Id
 	private Long id;
 	
@@ -17,9 +18,10 @@ public class Account {
 	private String lastName;
 	private int accountNumber;
 	
+	public Account() {
+		
+	}
 	
-	
-
 	public Account(String fName, String lName, int aNumber) {
 		this.firstName = fName;
 		this.lastName = lName;
